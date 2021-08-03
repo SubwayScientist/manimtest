@@ -1,0 +1,8 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/3163782288_271941524_3480708683.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_3512187089_2584215095.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_4033352641_1475833261.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_705696239_1475833261.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_850647763_1475833261.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_1492851150_3767138239.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/test/480p15/partial_movie_files/test2/607903841_3204573912_2761583546.mp4'
