@@ -50,5 +50,7 @@ class capture(Scene):
         self.play(MoveAlongPath(projectile1, func1), run_time = 3)
         self.play(Transform(projectile1, impact))
         self.play(FadeOut(projectile1, impact))
-        self.play(Create(zone))
+        self.add(func1)
+        self.play(Create(zone), run_time = 2.5)
+        self.remove(func1)
         self.wait(3)
