@@ -15,9 +15,15 @@ class rebound(Scene):
         line5 = Line(start = RIGHT*4+UP, end = RIGHT*4.5)
         wall = VGroup(line1, line2, line3, line4, line5)
         
+        axes = Axes(x_range = [0,10,1], y_range = [0,3,1], x_length = 10, y_length = 3, axis_config = {"include_tip": True, "numbers_to_exclude": [0]}).add_coordinates()
+        axes.to_edge(DOWN)
+        #axis_labels = axes.get_axis_labels(x_label ='x', y_label = 'f(x)')
+        
         self.play(Write(plane))
+        self.play(Create(axes))
         self.play(Create(particle))
         self.play(Create(wall))
-        self.play(r.animate.set_value(3.5), run_time = 4)
-        self.play(e.animate.set_value(0.5), r.animate.set_value(3.75))
+        self.play(LaggedStart(r.animate.set_value(3.75), e.animate.set_value(0.5), lag_ratio = 0.35), run_time = 5)
+        self.play(LaggedStart(e.animate.set_value(1), r.animate.set_value(-4), lag_ratio = 0.35), run_time = 5)
+        #self.play(e.animate.set_value(0.5), r.animate.set_value(3.75))
         self.wait(3)
