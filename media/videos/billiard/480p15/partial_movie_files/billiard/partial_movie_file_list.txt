@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/3163782288_959481161_1217767226.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_498720120_574892770.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_1831012034_636371681.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_1473040613_1735076518.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_1717149146_2831816388.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_1463730870_978498376.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_1591177182_3203835139.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_3758559359_2082044551.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_2265496448_4106842482.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/billiard/480p15/partial_movie_files/billiard/2201830969_3779976427_453593839.mp4'
