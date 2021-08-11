@@ -1,12 +1,12 @@
 from manim import *
 
+
 class billiard(Scene):
     def construct(self):
         plane = NumberPlane()
         
         circle1 = Circle(radius = 1, fill_color = PURPLE_E, fill_opacity = 1).shift(LEFT*4 + DOWN)
         vector1 = Arrow(start = LEFT, end = RIGHT*2).next_to(circle1.get_center(), RIGHT, buff=0)
-        #vector1.add_updater(lambda x : x.next_to(circle1.get_center(), RIGHT, buff=0))
         v0 = Tex(r"$v_0$").next_to(vector1.get_center(), UP, buff = 0.2)
         ball1 = VGroup(circle1, vector1, v0)
         
@@ -17,7 +17,6 @@ class billiard(Scene):
         
         line = Line(start = UP*4 + LEFT*1.5, end = DOWN*4 + RIGHT*1.2, stroke_width = 10)
         tangent = DashedVMobject(line)    #slope = -2.963, inverse = 0.3375
-        #line2 = Line(start = LEFT*0.2, end = RIGHT*1.8 + UP*0.675, stroke_width = 6)
         line3 = Line(start = LEFT*0.2, end = LEFT*4.2 + DOWN*1.35, stroke_width = 6)
         bissect = DashedVMobject(line3)
                 
@@ -25,13 +24,17 @@ class billiard(Scene):
         vector2.set_color(PURPLE_A)
         v_i = Tex(r"$v_i$").next_to(vector2.get_center(), UP, buff = 0.2).set_color(PURPLE_A)
         
-        vector3 = Arrow(start = LEFT*0.2, end = LEFT*2.4 + DOWN*1.485, buff = 0, max_tip_length_to_length_ratio=0.06)
+        vector3 = Arrow(start = LEFT*0.2, end = LEFT*1.632 + DOWN*1.091, buff = 0, max_tip_length_to_length_ratio=0.06)
         vector3.set_color(PURPLE_A)
         v_f = Tex(r"$v_f$").next_to(vector3.get_center(), DOWN, buff = 0.3).set_color(PURPLE_A)
         
-        vector4 = Arrow(start = LEFT*0.2, end = RIGHT*1.8 + UP*0.675, buff = 0, max_tip_length_to_length_ratio=0.06)
+        vector4 = Arrow(start = LEFT*0.2, end = RIGHT*3.4 + UP*1.215, buff = 0, max_tip_length_to_length_ratio=0.06)
         vector4.set_color(RED_A)
         v_ff = Tex(r"$v_f$").next_to(vector4.get_center(), UP, buff = 0.3).set_color(RED_A)
+        
+        angle1 = Arc(radius = 1.5, arc_center = [-0.2, 0, 1], start_angle = PI, angle = 0.3255)   #Theta is 18.65 degree
+        angle2 = Arc(radius = 1.2, arc_center = [-0.2, 0, 1], start_angle = PI+0.3255, angle = 0.3255)
+        theta = Tex(r"$\theta$").next_to(angle1, LEFT, buff = 0.2)
         
 
         
@@ -44,9 +47,10 @@ class billiard(Scene):
         self.play(Write(tangent), run_time = 2)
         self.play(Create(vector2))
         self.play(Write(v_i))
-        self.play(Create(bissect))
         self.play(LaggedStart(Create(vector3), Create(vector4), lag_ratio = 0.3))
         self.play(LaggedStart(Write(v_f), Write(v_ff), lag_ratio = 0.3))
+        self.play(Create(bissect))
+        self.play(LaggedStart(Create(angle1), Create(angle2), Write(theta), lag_ratio = 0.3))
         self.wait(3)
         
         
