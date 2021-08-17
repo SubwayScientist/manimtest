@@ -2,18 +2,22 @@ from manim import *
 
 class test2(Scene):
     def construct(self):
-        e = ValueTracker(0.01)
+        e = ValueTracker(4.5*PI)
         
-        spring = always_redraw(lambda :
-            ParametricFunction(
-                lambda t: np.array([
-                    0.1*np.sin(10*t),
-                    0.5*t*np.sin(e.get_value()) - t,
-                    0
-                ]), t_range = np.array([0.01, 1.5])                
-            ).set_color(GREY).shift(LEFT*3 + UP*3)
+        axes = Axes(x_range = [14,40,1], y_range = [-2,2,1],
+            x_length = 7, y_length = 4, 
+            axis_config = {"include_tip": True, "numbers_to_exclude": [0]}
+        ).shift(RIGHT*3.2)
+        axis_labels = axes.get_axis_labels(x_label ='t', y_label = 'y(t)')
+        graph_p = always_redraw(lambda :
+            axes.get_graph(lambda x : np.sin(x), x_range=[4.499*PI, e.get_value()], color=YELLOW
+            )
+        )
+        graph_m = always_redraw(lambda :
+            axes.get_graph(lambda x : 2*np.sin(x), x_range=[4.499*PI, e.get_value()], color=BLUE_E
+            )
         )
         
-        
-        self.add(spring)
-        self.play(e.animate.set_value(15), run_time = 15, rate_func = linear)
+        self.play(LaggedStart(Write(axes), Write(axis_labels), lag_ratio=0.35))
+        self.add(graph_p, graph_m)
+        self.play(e.animate.set_value(12.5*PI), run_time = 8, rate_func = linear)

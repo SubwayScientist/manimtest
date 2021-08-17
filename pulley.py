@@ -54,13 +54,29 @@ class pulley(Scene):
             ).set_color(BLUE_B)
         )
         
-        plane = NumberPlane()
-        self.play(Write(plane))
+        axes = Axes(x_range = [14,40,1], y_range = [-3,3,1],
+            x_length = 7, y_length = 6, 
+            axis_config = {"include_tip": True, "numbers_to_exclude": [0]}
+        ).shift(RIGHT*3.2)
+        axis_labels = axes.get_axis_labels(x_label ='t', y_label = 'y(t)')
+        graph_p = always_redraw(lambda :
+            axes.get_graph(lambda x : np.sin(x) + 1, x_range=[4.499*PI, e.get_value()], color=YELLOW
+            )
+        )
+        graph_m = always_redraw(lambda :
+            axes.get_graph(lambda x : 2*np.sin(x) - 0.5, x_range=[4.499*PI, e.get_value()], color=BLUE_E
+            )
+        )        
         
+        plane = NumberPlane()
+        #self.play(Write(plane), Write(axes))
+
         self.play(LaggedStart(Create(roof), Create(floor), lag_ratio=0.35))
         self.play(LaggedStart(Create(spring), DrawBorderThenFill(circle), lag_ratio=0.7))
         self.play(e.animate.set_value(4.5*PI), run_time = 12, rate_func = linear)
         self.play(LaggedStart(Create(string_p), Create(string_m), Create(mass), lag_ratio=0.8))
+        self.play(LaggedStart(Write(axes), Write(axis_labels), lag_ratio=0.35))
+        self.add(graph_p, graph_m)
         self.play(e.animate.set_value(12.5*PI), run_time = 24, rate_func = linear)
 
         
