@@ -3,10 +3,10 @@ from manim import *
 class pulley(Scene):
 
     def spring(self, t):
-        return np.array((0.1*np.sin(20*t), -t, 0))
+        return np.array((0.1*np.sin(10*t), -t, 0))
 
     def construct(self):
-        e = ValueTracker(0.01)
+        e = ValueTracker(0.)
         
         circle = always_redraw(lambda : 
             Circle(
@@ -17,11 +17,15 @@ class pulley(Scene):
                 .shift(LEFT*3 + UP + UP*np.sin(e.get_value())
             )        
         )
-        spring = ParametricFunction(
-            self.spring,
-            t_range = np.array([0.01, 2]),
-            fill_opacity = 0
-        ).set_color(GREY)
+        spring = always_redraw(lambda :
+            ParametricFunction(
+                lambda t: np.array([
+                    0.1*np.sin(10*t),
+                    0.66666*t*np.sin(e.get_value()) - t,
+                    0
+                ]), t_range = np.array([0., 1.5])                
+            ).set_color(GREY).shift(LEFT*3 + UP*3)
+        )
         
         
         self.play(Create(circle))
