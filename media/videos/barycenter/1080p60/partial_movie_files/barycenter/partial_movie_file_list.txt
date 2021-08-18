@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/450974505_4153559200_1333405370.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_1791195208_1515558377.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_3103831323_2243946629.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_3695943286_2413612892.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_2341245580_3574661702.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_3022187256_1181399809.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_1296694425_2727338758.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_3263697427_634515180.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_1110358535_1536796462.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_1705564449_4211990433.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/barycenter/1080p60/partial_movie_files/barycenter/34786186_3779976427_2040324341.mp4'
