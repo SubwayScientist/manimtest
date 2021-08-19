@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/450974505_1537742663_1333405370.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/34786186_3444205972_991410712.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/34786186_463752783_2562650635.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/34786186_3177125199_1202397202.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/34786186_3475368110_3225648577.mp4'
+file 'file:/home/aubert/dev/manimtest/media/videos/pulley/1080p60/partial_movie_files/pulley/34786186_1608328913_647259176.mp4'
