@@ -4,7 +4,11 @@ from manim import *
 class capture(Scene):
 
     def func1(self, t):
-        return np.array((3 - t**4, -1.5*t, 0))
+        x = np.interp(t, self.t1,  self.v1[0])
+        y = np.interp(t, self.t1, -self.v1[1])
+
+        return np.array([x,y,0])
+
         
     def func2(self, t):
         return np.array((4 - t**4, -2*t, 0))
@@ -13,6 +17,54 @@ class capture(Scene):
         return np.array((2 - t**4, -1*t, 0))
         
     def construct(self):
+    
+        R  = 1.0
+        N  = 100
+        r0 = 2.0
+        e  = 1.02
+        angle_max = np.arccos(-1./e)-0.1
+        phi  = np.linspace(angle_max,-angle_max, N)   # generate N points from 0 to X
+        r = r0/(1.+e*np.cos(phi))
+
+
+        phi_list = [-angle_max]
+        r_list   = [r0/(1.+e*np.cos(phi_list[-1]))]
+
+        cte=0.5
+        t = [0]
+        dt= 1
+        for ii in range(N-1):
+          dphi = cte / (r_list[-1]**2)
+          
+          phi_test = phi_list[-1] + dphi
+          r_test = r0/(1.+e*np.cos(phi_list[-1]))
+          
+          if r_test > r_list[-1]:
+            break
+          
+          r_list.append(r_test)
+          phi_list.append(phi_test)
+          t.append(t[-1]+dt)
+          
+
+        phi_t = np.array(phi_list)
+        r_t = np.array(r_list)
+
+
+        x = r_t*np.cos(phi_t)
+        y = r_t*np.sin(phi_t)
+
+        phi_0 = np.arccos(-1./e)+np.pi
+        v0  = np.array([x,y])
+        rot = np.array([[np.cos(phi_0),-np.sin(phi_0)],[np.sin(phi_0),np.cos(phi_0)]])
+
+        v = rot.dot(v0)
+
+        n1 = len(v)
+        self.v1 = v
+        self.t1 = t 
+    
+        ##############################################################################
     
         e = ValueTracker(4.6)
         
@@ -29,7 +81,7 @@ class capture(Scene):
         captureZone = VGroup(zone, radius_b, b)
         
         projectile1 = Circle(radius = 0.1, fill_color = ORANGE, fill_opacity = 1)
-        func1 = ParametricFunction(self.func1, t_range = np.array([-1.732, 0]), fill_opacity=0).set_color(YELLOW)
+        func1 = ParametricFunction(self.func1, t_range = np.array([0., 1000*n1]), fill_opacity=1).set_color(YELLOW)
         x1 = Star(n=8, outer_radius=0.1, inner_radius = 0.01, color = PURPLE_A).shift(LEFT*6 + UP*2.55)
         
         projectile2 = Circle(radius = 0.12, fill_color = ORANGE, fill_opacity = 1)
@@ -58,20 +110,27 @@ class capture(Scene):
         v_0.move_to(LEFT*4.45 + UP *2.9)
         particle = VGroup(dot, vector, v_0)
         
-        #self.play(Write(plane))
-        self.play(Create(planet), run_time = 2.5)
-        self.add(x2)
-        self.play(MoveAlongPath(projectile2, func2), run_time = 6)
-        self.play(FadeOut(projectile2), run_time=0.5)
-        self.add(x3)
-        self.play(MoveAlongPath(projectile3, func3), run_time = 2)
-        self.play(Transform(projectile3, star))
-        self.play(FadeOut(projectile3, star))
-        self.add(x1)
-        self.play(MoveAlongPath(projectile1, func1), run_time = 3)
-        self.play(Transform(projectile1, impact))
-        self.play(FadeOut(projectile1, impact))
+        
+        print(self.v1)
+        print(self.t1)
+       
+        self.play(Write(plane))
+        #self.play(Create(planet), run_time = 2.5)
+        #self.add(x2)
+        #self.play(MoveAlongPath(projectile2, func2), run_time = 6)
+        #self.play(FadeOut(projectile2), run_time=0.5)
+        #self.add(x3)
+        #self.play(MoveAlongPath(projectile3, func3), run_time = 2)
+        #self.play(Transform(projectile3, star))
+        #self.play(FadeOut(projectile3, star))
+        #self.add(x1)
         self.add(func1)
+        self.wait(3)
+        #self.play(MoveAlongPath(projectile1, func1), run_time = 3)
+        #self.play(Transform(projectile1, impact))
+        #self.play(FadeOut(projectile1, impact))
+
+        """
         self.play(Create(captureZone), run_time = 2.5)
         self.remove(func1)
         self.play(FadeIn(rectangle))
@@ -81,3 +140,4 @@ class capture(Scene):
         self.play(e.animate.set_value(10), run_time = 6)
         self.play(e.animate.set_value(2), run_time = 6)
         self.wait(3)
+        """
